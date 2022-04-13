@@ -1,3 +1,5 @@
-body {
-    background-color: navy;
+.waves-effect {
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: #ea6f85;
 }
