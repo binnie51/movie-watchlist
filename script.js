@@ -4,7 +4,7 @@ console.log("test");
 // API key: 528cb2fd
 
 let searchBtn = $("#searchBtn");
-
+let trailerID;
 searchBtn.on("click", function() {
     console.log("click");
     let title = $("input").val();
@@ -17,13 +17,34 @@ searchBtn.on("click", function() {
             console.log(data)
                 // let title = data.Title();
             console.log(title)
+
+
             let moviesUrl = "http://www.omdbapi.com/?i=" + data.Search[0].imdbID + "&apikey=528cb2fd"
             return fetch(moviesUrl)
+        })
 
-        }).then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            console.log(data)
-        })
+    .then(async function(response) {
+        var data = await response.json();
+        console.log(data)
+        trailerID = data.imdbID;
+        getTrailer();
+    })
 });
+
+
+let playBtn = $("#playBtn");
+const imdbAPIKey = "k_g52895d2";
+
+async function getTrailer() {
+    console.log("click");
+    let requestUrl = "https://imdb-api.com/en/API/Trailer/k_g52895d2/" + trailerID;
+    var response = await fetch(requestUrl);
+    var data = await response.json();
+    console.log(data)
+    console.log(data.linkEmbed);
+    document.querySelector(".myTrailer").src = data.linkEmbed;
+
+
+
+}
+playBtn.on("click", getTrailer)
