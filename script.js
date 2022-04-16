@@ -3,6 +3,7 @@ console.log("test");
 // OMDb API: http://www.omdbapi.com/?i=tt3896198&apikey=528cb2fd
 // API key: 528cb2fd
 
+// writing function to fetch url through te use of async and await ln:27 
 let searchBtn = $("#searchBtn");
 let trailerID;
 searchBtn.on("click", function() {
@@ -31,6 +32,12 @@ searchBtn.on("click", function() {
     })
 });
 
+// var for key value pairs
+// var movieDetail = {
+//     title: title,
+//     director: data.Director,
+    
+// }
 
 let playBtn = $("#playBtn");
 const imdbAPIKey = "k_g52895d2";
