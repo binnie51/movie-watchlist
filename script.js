@@ -3,6 +3,9 @@ console.log("test");
 // OMDb API: http://www.omdbapi.com/?i=tt3896198&apikey=528cb2fd
 // API key: 528cb2fd
 
+
+// 
+
 let searchBtn = $("#searchBtn");
 
 searchBtn.on("click", function() {
@@ -27,3 +30,4 @@ searchBtn.on("click", function() {
             console.log(data)
         })
 });
+
