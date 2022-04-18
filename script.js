@@ -1,4 +1,4 @@
-//define global variables
+
 let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
 let modal = $('.modal').modal();
@@ -59,22 +59,22 @@ function renderTrailerByImdbId(imdbId) {
             return response.json();
         })
 
-    .then(function(data) {
-        console.log(data);
-        // all the logic for rednreing
-        //    <div id="modal1" class="modal">
-        //   <div class="modal-content">
-        //   <h4>Modal Header</h4>
-        //   <p>A bunch of text</p>
-        // </div>
-        let modalContent = $(`<div>`, { class: "modal-content" });
-        let modalHeader = $("<h4>");
 
-        let iFrame = $("<iframe>", { src: "" });
-        modalHeader.text("trailer");
-        modalContent.append("modalHeader");
-        modal.append(modalContent);
-        $('#modal1').modal('open')
+    .then(function (data) {
+      console.log(data);
+      modal$.empty();   
+      let modalContent = $("<div>", { class: 'modal-content'});
+      let modalHeader = $("<h4>");
+      modalHeader.text(data.fullTitle)
+      modalContent.append(modalHeader)
+      let iframe = $("<iframe>")
+      iframe.attr('src', data.linkEmbed);
+      iframe.attr('height', "720px");
+      iframe.attr('width', "1280px");
+      modalContent.append(iframe)
+      modal$.append(modalContent)
+        $('#modal1').modal('open')  
+
     })
 }
 //event listener for play button to retrieve trailer data on click
@@ -82,7 +82,6 @@ $(document).on('click', '.trailerBtn', function(e) {
     const imdbId = $(e.target).data('data')
     renderTrailerByImdbId(imdbId)
 });
-
 
 
 
