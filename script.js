@@ -1,4 +1,4 @@
-//define global variables
+
 let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
 let modal$ =  $('.modal').modal();
@@ -119,4 +119,3 @@ function getWatchlist() {
     localStorage.getItem("selectTitle")
     return JSON.parse(selectTitle);
 };
-
