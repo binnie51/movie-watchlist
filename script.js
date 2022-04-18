@@ -1,12 +1,17 @@
 //define global variables
 let searchBtn = $("#searchBtn");
 let trailerID;
+var apiKey = '528cb2fd';
+
+// const childrenArray = [];
+
+
 //add click event listener ffor main search function
 searchBtn.on("click", function() {
     //assign variable, targeting input value in DOM
-    let title = $("input").val();
+    let keyTerm = $("input").val();
     //assign variable to URL, concatenating title and APIkey
-    let requestUrl = "http://www.omdbapi.com/?s=" + title + "&apikey=528cb2fd"
+    let requestUrl = "http://www.omdbapi.com/?s=" + keyTerm + "&apikey=" + apiKey;
         //perform an API Call to request and return JSON data from OMDB
     fetch(requestUrl)
         .then(function(response) {
@@ -14,10 +19,14 @@ searchBtn.on("click", function() {
         })
 
     .then(function(data) {
-            console.log(data)
-                // let title = data.Title();
-            console.log(title)
-            let moviesUrl = "http://www.omdbapi.com/?i=" + data.Search[0].imdbID + "&apikey=528cb2fd"
+            console.log(data) // search results
+
+
+            
+            // let title = data.Title();
+            console.log(keyTerm)
+
+            let moviesUrl = "http://www.omdbapi.com/?i=" + data.Search[0].imdbID + "&apikey=" + apiKey;
             return fetch(moviesUrl)
         })
         //perform an API call to request and return JSON data specific to title search
@@ -25,16 +34,18 @@ searchBtn.on("click", function() {
         .then(async function(response) {
             //and then when data is received, return as JSON
             var data = await response.json();
-            console.log(data)
-                //assign retrieved data from response to variable and call gettrailer function
-            trailerID = data.imdbID;
-            getTrailer();
+            console.log(data) 
+
+
         })
 });
+
 //assign variable to access play button in the DOM to play trailer
 let playBtn = $("#playBtn");
+
 //assign variable to provided API Key
 const imdbAPIKey = "k_g52895d2";
+
 //perform an API call to request data and return in JSON using async/await 
 //on line 40 write async in front of function indicating that the code will not run in the order it is written. why? without that preface, the code will run without a received request. When it runs asynchronously, use "await" to ensure the code knows to run AFTER the data gets received.
 async function getTrailer() {

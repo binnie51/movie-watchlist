@@ -28,7 +28,7 @@
             <div class="col s8">
                 <div class="row">
                     <div class="input-field col s8">
-                        <input id="autocomplete-input" type="text" class="autocomplete-input" placeholder="search for movies" />
+                        <input id="autocomplete-input searchInput" type="text" class="autocomplete-input" placeholder="search for movies" />
                         <!-- <label for="autocomplete-input">Search a movie</label> -->
                     </div>
                     <a class="waves-effect waves-light btn" id="searchBtn"><i class="material-icons left">search</i>Search</a>
@@ -37,9 +37,15 @@
             <div class="col s2"></div>
         </div>
     </section>
+    <!-- search results list -->
     <div class="row">
-        <div class="col s3 m3">
-            <div class="card">
+        <div class="grid-example col s12" id="movieList">
+
+        </div>
+      </div>
+    <div class="row">
+        <div class="col s3 m3"  id="movie-content">
+            <div class="card" id="movie-poster">
                 <div class="card-image">
                     <img src="https://th.bing.com/th/id/OIP.2u5rOKL5nQsXSzd0yBi6LwHaLE?w=115&h=180&c=7&r=0&o=5&pid=1.7">
                     <span class="card-title">Titanic</span>
@@ -53,8 +59,9 @@
             </div>
         </div>
         <div class="col s9 m9">
-            <div class="card">
-                <h2 class="movie-detail">Title</h2>
+            <div class="card" id="movie-detail">
+                <h2 class="movie-title">Title</h2>
+                
 
             </div>
         </div>
