@@ -90,8 +90,18 @@ function renderTrailerByImdbId(imdbId){
     })
 
     .then(function (data) {
-      console.log(data);    
-        // all the logic for rednreing
+      console.log(data);
+      modal$.empty();   
+      let modalContent = $("<div>", { class: 'modal-content'});
+      let modalHeader = $("<h4>");
+      modalHeader.text(data.fullTitle)
+      modalContent.append(modalHeader)
+      let iframe = $("<iframe>")
+      iframe.attr('src', data.linkEmbed);
+      iframe.attr('height', "720px");
+      iframe.attr('width', "1280px");
+      modalContent.append(iframe)
+      modal$.append(modalContent)
         $('#modal1').modal('open')  
     })
 }
@@ -102,9 +112,6 @@ $(document).on('click', '.trailerBtn', function(e){
     renderTrailerByImdbId(imdbId) 
 });
 
-
-//event listener for play button to retrieve trailer data on click
-playBtn.on("click", getTrailer)
 
 //target add to watchlist button and add event listener
 let selectTitle = document.querySelector(".watchlistBtn");
