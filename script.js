@@ -96,8 +96,27 @@ function renderTrailerByImdbId(imdbId){
     })
 }
 
+
 $(document).on('click', '.trailerBtn', function(e){
     const imdbId = $(e.target).data('data') 
     renderTrailerByImdbId(imdbId) 
 });
+
+
+//event listener for play button to retrieve trailer data on click
+playBtn.on("click", getTrailer)
+
+//target add to watchlist button and add event listener
+let selectTitle = document.querySelector(".watchlistBtn");
+selectTitle.addEventListener("click", addWatchlist);
+//local storage functions -- still needs data and a place to render
+function addWatchlist() {
+    console.log("test");
+    localStorage.setItem("selectTitle", JSON.stringify(selectTitle));
+};
+
+function getWatchlist() {
+    localStorage.getItem("selectTitle")
+    return JSON.parse(selectTitle);
+};
 
