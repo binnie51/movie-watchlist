@@ -1,6 +1,7 @@
 let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
 let modal$ = $('.modal').modal();
+let movieDescription = $('.modal').modal();
 
 let trailerID;
 //add click event listener ffor main search function
@@ -41,6 +42,7 @@ searchBtn.on("click", function() {
 
                 let descriptionBtn = $("<button>", { class: 'btn descriptionBtn' });
                 descriptionBtn.text("Description");
+                descriptionBtn.data('data', movie.imdbID)
 
                 trailer.append(descriptionBtn);
                 card.append(trailer);
@@ -76,12 +78,67 @@ function renderTrailerByImdbId(imdbId) {
 
     })
 }
+
+// show description on id "modal2"
+function renderDescriptionbyImdb(imdbId) {
+    console.log('click')
+    let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
+
+    fetch(moviesUrl)
+        .then(function(response) {
+            console.log(response);
+            return response.json();
+        })
+
+
+    .then(function(data) {
+        console.log(data);
+        movieDescription.empty();
+
+        let descriptionContent = $("<div>", { class: 'modal-content' });
+        let descriptionHeader = $("<h4>");
+        descriptionHeader.text(data.Title);
+        descriptionContent.append(descriptionHeader);
+
+
+        let directorName = $('<h5>');
+        let year = $('<h5>');
+        let runTime = $('<h5>');
+        let rating = $('<h5>');
+        let plot = $("<p>");
+
+        directorName.text("Director: " + data.Director);
+        year.text("YR: " + data.Year);
+        runTime.text("Run Time:" + data.Runtime);
+        rating.text("Rating: " + data.imdbRating);
+        plot.text(data.Plot);
+
+        descriptionContent.append(directorName);
+        descriptionContent.append(year);
+        descriptionContent.append(runTime);
+        descriptionContent.append(rating);
+        descriptionContent.append(plot);
+
+        movieDescription.append(descriptionContent);
+
+
+        $('#modal1').modal('open')
+
+    })
+}
 //event listener for play button to retrieve trailer data on click
 $(document).on('click', '.trailerBtn', function(e) {
     const imdbId = $(e.target).data('data')
     renderTrailerByImdbId(imdbId)
 });
 
+// event listener for movies descriptions 
+$(document).on('click', '.descriptionBtn', function(e) {
+    const imdbId = $(e.target).data('data')
+    console.log(imdbId);
+    renderDescriptionbyImdb(imdbId)
+
+});
 
 
 
