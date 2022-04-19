@@ -7,6 +7,8 @@ let movieDescription = $('.modal').modal();
 let trailerID;
 //add click event listener ffor main search function
 
+<<<<<<< HEAD
+=======
 searchBtn.on("click", function () {
   //assign variable, targeting input value in DOM
   let title = $("input").val();
@@ -61,6 +63,7 @@ searchBtn.on("click", function() {
     //assign variable, targeting input value in DOM
     let title = $("input").val();
 
+>>>>>>> 585d455bf964aa075759244be01f3912b23b2143
     //assign variable to URL, concatenating title and APIkey
     let requestUrl = "http://www.omdbapi.com/?s=" + title + "&apikey=528cb2fd";
     //perform an API Call to request and return JSON data from OMDB
@@ -105,7 +108,10 @@ searchBtn.on("click", function() {
 });
 
 function renderTrailerByImdbId(imdbId) {
+<<<<<<< HEAD
+=======
 
+>>>>>>> 585d455bf964aa075759244be01f3912b23b2143
     console.log('click')
     let moviesUrl = "https://imdb-api.com/en/API/Trailer/k_g52895d2/" + imdbId
     fetch(moviesUrl)
