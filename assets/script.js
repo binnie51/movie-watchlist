@@ -34,7 +34,6 @@ searchBtn.on("click", function() {
                 imgTag.append(cardTitle);
 
                 let trailer = $("<div>", { class: 'card-action' });
-
                 let trailerBtn = $("<button>", { class: 'btn trailerBtn' });
                 trailerBtn.data('data', movie.imdbID)
                 trailerBtn.text("Trailer");
@@ -43,14 +42,20 @@ searchBtn.on("click", function() {
                 let descriptionBtn = $("<button>", { class: 'btn descriptionBtn' });
                 descriptionBtn.text("Description");
                 descriptionBtn.data('data', movie.imdbID)
+                    //add button to add watchlist
+                let addWatchlist = `<button class="btn addWatchlistBtn right">
+                <i class="material-icons">add_circle_outline</i>
+                </button>`
 
                 trailer.append(descriptionBtn);
+                trailer.append(addWatchlist);
                 card.append(trailer);
                 container.append(card);
                 moviesCard.append(container);
             })
         });
 });
+
 
 function renderTrailerByImdbId(imdbId) {
     console.log('click')
@@ -132,6 +137,10 @@ $(document).on('click', '.trailerBtn', function(e) {
     renderTrailerByImdbId(imdbId)
 });
 
+//add watchlist button to add data to watchlist.html file
+$(document).on('click', '.addWatchlistBtn', function(e) {
+    console.log("click");
+});
 // event listener for movies descriptions 
 $(document).on('click', '.descriptionBtn', function(e) {
     const imdbId = $(e.target).data('data')
@@ -141,17 +150,32 @@ $(document).on('click', '.descriptionBtn', function(e) {
 });
 
 
-
 //target add to watchlist button and add event listener
 // let selectTitle = document.querySelector(".watchlistBtn");
 // selectTitle.addEventListener("click", addWatchlist);
 //local storage functions -- still needs data and a place to render
+let selectTitle = [];
+
 function addWatchlist() {
     console.log("test");
     localStorage.setItem("selectTitle", JSON.stringify(selectTitle));
 };
 
+$(document).ready(function() {
+    let watchlist = JSON.parse(localStorage.getItem("selectTitle"));
+    if (watchlist != null) {
+        let watchlistIndex = watchlist.length
+
+    }
+});
+
 function getWatchlist() {
     localStorage.getItem("selectTitle")
     return JSON.parse(selectTitle);
 };
+
+//render to watchlist.html
+function renderWatchlist() {
+
+}
+//remove title from watchlist function
