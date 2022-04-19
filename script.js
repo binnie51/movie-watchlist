@@ -1,7 +1,6 @@
-
 let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
-let modal = $('.modal').modal();
+let modal$ = $('.modal').modal();
 
 let trailerID;
 //add click event listener ffor main search function
@@ -60,20 +59,20 @@ function renderTrailerByImdbId(imdbId) {
         })
 
 
-    .then(function (data) {
-      console.log(data);
-      modal$.empty();   
-      let modalContent = $("<div>", { class: 'modal-content'});
-      let modalHeader = $("<h4>");
-      modalHeader.text(data.fullTitle)
-      modalContent.append(modalHeader)
-      let iframe = $("<iframe>")
-      iframe.attr('src', data.linkEmbed);
-      iframe.attr('height', "720px");
-      iframe.attr('width', "1280px");
-      modalContent.append(iframe)
-      modal$.append(modalContent)
-        $('#modal1').modal('open')  
+    .then(function(data) {
+        console.log(data);
+        modal$.empty();
+        let modalContent = $("<div>", { class: 'modal-content' });
+        let modalHeader = $("<h4>");
+        modalHeader.text(data.fullTitle)
+        modalContent.append(modalHeader)
+        let iframe = $("<iframe>")
+        iframe.attr('src', data.linkEmbed);
+        iframe.attr('height', "720px");
+        iframe.attr('width', "1280px");
+        modalContent.append(iframe)
+        modal$.append(modalContent)
+        $('#modal1').modal('open')
 
     })
 }
