@@ -40,4 +40,3 @@ The following image shows the web application's appearance:
 
 ![]()
 
-
