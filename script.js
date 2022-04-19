@@ -1,7 +1,7 @@
 
 let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
-let modal = $('.modal').modal();
+let modal$ = $ ('.modal').modal();
 
 let trailerID;
 //add click event listener ffor main search function
