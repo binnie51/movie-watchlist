@@ -134,6 +134,7 @@ function renderDescriptionbyImdb(imdbId) {
 //event listener for play button to retrieve trailer data on click
 $(document).on('click', '.trailerBtn', function(e) {
     const imdbId = $(e.target).data('data')
+    console.log("trailerBtn")
     renderTrailerByImdbId(imdbId)
 });
 
