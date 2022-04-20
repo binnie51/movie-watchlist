@@ -143,6 +143,7 @@ function renderDescriptionbyImdb(imdbId) {
 //event listener for play button to retrieve trailer data on click
 $(document).on('click', '.trailerBtn', function(e) {
     const imdbId = $(e.target).data('data')
+    console.log("trailerBtn")
     renderTrailerByImdbId(imdbId)
 });
 
@@ -184,8 +185,3 @@ $(document).on('click', '.descriptionBtn', function(e) {
 //     return JSON.parse(selectTitle);
 // };
 
-// //render to watchlist.html
-// function renderWatchlist() {
-
-// }
-//remove title from watchlist function
