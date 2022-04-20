@@ -43,12 +43,20 @@ searchBtn.on("click", function() {
                 descriptionBtn.text("Description");
                 descriptionBtn.data('data', movie.imdbID)
                     //add button to add watchlist
-                let addWatchlist = `<button class="btn addWatchlistBtn right">
-                <i class="material-icons">add_circle_outline</i>
-                </button>`
+                let watchlistBtn = $("<button>", { class: 'btn addWatchlistBtn' });
+                watchlistBtn.html(`<i class="material-icons">add_circle_outline</i>`).data({
+                    poster: movie.Poster,
+                    title: movie.Title,
+                    year: movie.Year,
+                    runtime: movie.Runtime,
+                    rated: movie.Rated,
+                    plot: movie.plot
+                });
+
+
 
                 trailer.append(descriptionBtn);
-                trailer.append(addWatchlist);
+                trailer.append(watchlistBtn);
                 card.append(trailer);
                 container.append(card);
                 moviesCard.append(container);
@@ -97,7 +105,8 @@ function renderDescriptionbyImdb(imdbId) {
 
 
     .then(function(data) {
-        console.log(data);
+        console.log("data: ", data);
+        test = data
         movieDescription.empty();
 
         let descriptionContent = $("<div>", { class: 'modal-content' });
@@ -140,7 +149,8 @@ $(document).on('click', '.trailerBtn', function(e) {
 
 //add watchlist button to add data to watchlist.html file
 $(document).on('click', '.addWatchlistBtn', function(e) {
-    console.log("click");
+    console.log("click", $(e.currentTarget).data());
+
 });
 // event listener for movies descriptions 
 $(document).on('click', '.descriptionBtn', function(e) {
@@ -155,28 +165,23 @@ $(document).on('click', '.descriptionBtn', function(e) {
 // let selectTitle = document.querySelector(".watchlistBtn");
 // selectTitle.addEventListener("click", addWatchlist);
 //local storage functions -- still needs data and a place to render
-let selectTitle = [];
+// let selectTitle = [];
 
-function addWatchlist() {
-    console.log("test");
-    localStorage.setItem("selectTitle", JSON.stringify(selectTitle));
-};
+// function addWatchlist() {
 
-$(document).ready(function() {
-    let watchlist = JSON.parse(localStorage.getItem("selectTitle"));
-    if (watchlist != null) {
-        let watchlistIndex = watchlist.length
+//     localStorage.setItem("selectTitle", JSON.stringify(selectTitle));
+// };
 
-    }
-});
+// $(document).ready(function() {
+//     let watchlist = JSON.parse(localStorage.getItem("selectTitle"));
+//     if (watchlist != null) {
+//         let watchlistIndex = watchlist.length
 
-function getWatchlist() {
-    localStorage.getItem("selectTitle")
-    return JSON.parse(selectTitle);
-};
+//     }
+// });
 
-//render to watchlist.html
-function renderWatchlist() {
+// function getWatchlist() {
+//     localStorage.getItem("selectTitle")
+//     return JSON.parse(selectTitle);
+// };
 
-}
-//remove title from watchlist function
