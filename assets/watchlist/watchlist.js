@@ -6,25 +6,29 @@ $(document).ready(function() {
     let watchlist = [];
     if (watchlist) {
         watchlist = JSON.parse(storedList);
-    }
-    else {
-         watchlist = [];
-     
+        console.log(watchlist)
+
+        for(var i = 0; i < watchlist.length; i++){
+
         let container$ = $("<div>", { class: 'col s12' });
         let card$ = $("<div>", { class: 'card' });
         let imgTag$ = $("<div>", { class: 'card-image' });
-        let poster$ = $("<img>", { src: watchlist.Poster, height: 532 });
+        let poster$ = $("<img>", { src: watchlist[i].poster, height: 532 });
         let cardTitle$ = $("<span>", { class: 'card-title' });
     
         
 
 
-cardTitle$.text(watchlist.Title);
+cardTitle$.text(watchlist[i].title);
 imgTag$.append(poster$);
 card$.append(imgTag$);
-imgTag$.append(cardTitle$);
-cardTitle$.append(showWatchlist);
+card$.append(cardTitle$);
+container$.append(card$);
 showWatchlist.append(container$);
+    }}
+    else {
+         watchlist = [];
+     
     }
   
     
