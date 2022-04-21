@@ -19,10 +19,10 @@ searchBtn.on("click", function() {
         .then(function(data) {
             moviesCard.html("");
             data.Search.forEach(function(movie) {
-                let container = $("<div>", { class: 'col s3 m3' });
-                let card = $("<div>", { class: 'card' });
+                let container = $("<div>", { class: 'col s3 m4' });
+                let card = $("<div>", { class: 'card', width: 450 });
                 let imgTag = $("<div>", { class: 'card-image' });
-                let poster = $("<img>", { src: movie.Poster, height: 532 });
+                let poster = $("<img>", { src: movie.Poster, height: 532, width: 450 });
                 let cardTitle = $("<span>", { class: 'card-title' });
 
                 cardTitle.text(movie.Title);
