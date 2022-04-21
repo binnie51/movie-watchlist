@@ -45,14 +45,8 @@ searchBtn.on("click", function() {
                 //add button to add watchlist
                 let watchlistBtn = $("<button>", { class: 'btn addWatchlistBtn' });
 
-                watchlistBtn.html(`<i class="material-icons">add_circle_outline</i>`).data({
-                    poster: movie.Poster,
-                    title: movie.Title,
-                    year: movie.Year,
-                    runtime: movie.Runtime,
-                    rated: movie.Rated,
-                    plot: movie.plot
-                });
+                watchlistBtn.html(`<i class="material-icons">add_circle_outline</i>`)
+                watchlistBtn.data('data', movie.imdbID);
 
                 trailer.append(descriptionBtn);
                 trailer.append(watchlistBtn);
@@ -141,6 +135,35 @@ function renderDescriptionbyImdb(imdbId) {
 
     });
 };
+function renderWatchListbyImdb(imdbId) {
+    console.log('click')
+    let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
+
+    fetch(moviesUrl)
+        .then(function(response) {
+            console.log(response);
+            return response.json();
+        })
+
+    .then(function(data) {
+        console.log("data: ", data);
+        let storelist = {
+            poster: data.Poster,
+            title: data.Title,
+            year: data.Year,
+            runtime: data.Runtime,
+            rated: data.Rated,
+            plot: data.Plot
+        }
+        watchlist.push(storelist);
+        //save movie data to local storage
+        localStorage.setItem("watchlist", JSON.stringify(watchlist));
+        console.log("saved to watchlist", storelist);
+        $('#modal1').modal('open');
+
+    });
+};
+
 
 //event listener for play button to retrieve trailer data on click
 $(document).on('click', '.trailerBtn', function(e) {
@@ -152,12 +175,10 @@ $(document).on('click', '.trailerBtn', function(e) {
 //add watchlist button to add data to watchlist.html file
 //target add to watchlist button and add event listener
 $(document).on('click', '.addWatchlistBtn', function(e) {
-    let movieObject = $(e.currentTarget).data();
+    let imdbId = $(e.currentTarget).data('data');
+    renderWatchListbyImdb(imdbId)
     //add movie data to watchlist array
-    watchlist.push(movieObject);
-    //save movie data to local storage
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    console.log("saved to watchlist", movieObject);
+   
 });
 
 // event listener for movies descriptions 
@@ -173,7 +194,7 @@ let watchlist = null;
 //first get pre-existing movies from local storage otherwise create new array
 $(document).ready(function() {
     watchlist = localStorage.getItem("watchlist");
-    if (watchlist) {
+    if (watchlist != null) {
         watchlist = JSON.parse(watchlist);
     } else {
         watchlist = [];
