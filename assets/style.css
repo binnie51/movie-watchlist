@@ -9,3 +9,23 @@
     height:720px;
     width:1280px;
 }
+
+.container{
+    display: flex;
+
+}
+
+.card-action{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn{
+    border-radius: 20px;
+    background-color: #ea6f85;
+}
+
+.brand-logo{
+    margin:0 auto;
+    text-align: center;
+}
