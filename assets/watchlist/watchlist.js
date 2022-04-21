@@ -6,26 +6,36 @@ $(document).ready(function() {
     let watchlist = [];
     if (watchlist) {
         watchlist = JSON.parse(storedList);
-    }
-    else {
-         watchlist = [];
-     
-        let container$ = $("<div>", { class: 'col s12' });
+        console.log(watchlist)
+
+        for(var i = 0; i < watchlist.length; i++){
+
+        let container$ = $("<div>", { class: 'col s4 m4' });
         let card$ = $("<div>", { class: 'card' });
         let imgTag$ = $("<div>", { class: 'card-image' });
-        let poster$ = $("<img>", { src: watchlist.Poster, height: 532 });
-        let cardTitle$ = $("<span>", { class: 'card-title' });
-    
-        
+        let poster$ = $("<img>", { src: watchlist[i].poster, height: 532 });
+        let cardTitle$ = $("<div>", { class: 'card-title' });
+        let cardYear$ = $("<div>", { class: 'card-title' });
+        let cardRuntime$ = $("<div>", { class: 'card-title' });
+        let cardPlot$ = $("<div>", { class: 'card-title' });
+        cardTitle$.text("Title: " + watchlist[i].title);
+        cardYear$.text("Year:" +watchlist[i].year);
+        cardRuntime$.text("Runtime: "+ watchlist[i].runtime);
+        cardPlot$.text("Review: " + watchlist[i].plot);
+        imgTag$.append(poster$);
+        card$.append(imgTag$);
+        card$.append(cardTitle$);
+        card$.append(cardYear$);
+        card$.append(cardRuntime$);
+        card$.append(cardPlot$);
 
-
-cardTitle$.text(watchlist.Title);
-imgTag$.append(poster$);
-card$.append(imgTag$);
-imgTag$.append(cardTitle$);
-cardTitle$.append(showWatchlist);
-showWatchlist.append(container$);
-    }
+        container$.append(card$);
+        showWatchlist.append(container$);
+            }}
+            else {
+                watchlist = [];
+            
+            }
   
     
     
