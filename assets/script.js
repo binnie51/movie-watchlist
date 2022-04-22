@@ -3,6 +3,8 @@ let moviesCard = $(".movie-cards");
 let modal$ = $('.modal').modal();
 let movieDescription = $('.modal').modal();
 
+var container = $(".container");
+
 let trailerID;
 //add click event listener ffor main search function
 searchBtn.on("click", function() {
@@ -19,7 +21,7 @@ searchBtn.on("click", function() {
         .then(function(data) {
             moviesCard.html("");
             data.Search.forEach(function(movie) {
-                let container = $("<div>", { class: 'col s3 m4' });
+                let container = $("<div>", { class: 'left col l4 m6 s12' });
                 let card = $("<div>", { class: 'card', width: 450 });
                 let imgTag = $("<div>", { class: 'card-image' });
                 let poster = $("<img>", { src: movie.Poster, height: 532, width: 450 });
@@ -57,6 +59,7 @@ searchBtn.on("click", function() {
         });
 });
 
+// Show trailers 
 function renderTrailerByImdbId(imdbId) {
     console.log('click');
     let moviesUrl = "https://imdb-api.com/en/API/Trailer/k_g52895d2/" + imdbId;
@@ -68,18 +71,21 @@ function renderTrailerByImdbId(imdbId) {
             console.log(data);
             modal$.empty();
 
-            let modalContent = $("<div>", { class: 'modal-content' });
+            let modalContent = $("<div>", { class: 'modal-content trailer-modal-content' });
             let modalHeader = $("<h4>");
+            let vidCon = $("<div>", { class: 'video-container' });
 
             modalHeader.text(data.fullTitle);
             modalContent.append(modalHeader);
+            
 
             let iframe = $("<iframe>");
 
             iframe.attr('src', data.linkEmbed);
-            iframe.attr('height', "720px");
-            iframe.attr('width', "1280px");
-            modalContent.append(iframe);
+            iframe.attr('height', "480px");
+            iframe.attr('width', "853px");
+            vidCon.append(iframe);
+            modalContent.append(vidCon);
             modal$.append(modalContent);
 
             $('#modal1').modal('open');
@@ -103,22 +109,22 @@ function renderDescriptionbyImdb(imdbId) {
         test = data
         movieDescription.empty();
 
-        let descriptionContent = $("<div>", { class: 'modal-content' });
-        let descriptionHeader = $("<h4>");
+        let descriptionContent = $("<div>", { class: 'description-modal-content' });
+        let descriptionHeader = $("<h3>");
 
         descriptionHeader.text(data.Title);
         descriptionContent.append(descriptionHeader);
 
 
-        let directorName = $('<h5>');
-        let year = $('<h5>');
-        let runTime = $('<h5>');
-        let rating = $('<h5>');
+        let directorName = $('<p>');
+        let year = $('<p>');
+        let runTime = $('<p>');
+        let rating = $('<p>');
         let plot = $("<p>");
 
         directorName.text("Director: " + data.Director);
-        year.text("YR: " + data.Year);
-        runTime.text("Run Time:" + data.Runtime);
+        year.text("Year: " + data.Year);
+        runTime.text("Running Time:" + data.Runtime);
         rating.text("Rating: " + data.imdbRating);
         plot.text(data.Plot);
 
@@ -159,8 +165,6 @@ function renderWatchListbyImdb(imdbId) {
         //save movie data to local storage
         localStorage.setItem("watchlist", JSON.stringify(watchlist));
         console.log("saved to watchlist", storelist);
-        $('#modal1').modal('open');
-
     });
 };
 
@@ -176,7 +180,7 @@ $(document).on('click', '.trailerBtn', function(e) {
 //target add to watchlist button and add event listener
 $(document).on('click', '.addWatchlistBtn', function(e) {
     let imdbId = $(e.currentTarget).data('data');
-    renderWatchListbyImdb(imdbId)
+    renderWatchListbyImdb(imdbId);
     //add movie data to watchlist array
    
 });
