@@ -21,8 +21,8 @@ searchBtn.on("click", function() {
         .then(function(data) {
             moviesCard.html("");
             data.Search.forEach(function(movie) {
-                let container = $("<div>", { class: 'left col l4 m6 s12' });
-                let card = $("<div>", { class: 'card', width: 450 });
+                let container = $("<div>", { class: 'col l4 m6 s12' });
+                let card = $("<div>", { class: 'card hoverable', width: 450 });
                 let imgTag = $("<div>", { class: 'card-image' });
                 let poster = $("<img>", { src: movie.Poster, height: 532, width: 450 });
                 let cardTitle = $("<span>", { class: 'card-title' });
@@ -32,26 +32,29 @@ searchBtn.on("click", function() {
                 card.append(imgTag);
                 imgTag.append(cardTitle);
 
+                // trailer button
                 let trailer = $("<div>", { class: 'card-action' });
                 let trailerBtn = $("<button>", { class: 'btn trailerBtn' });
 
                 trailerBtn.data('data', movie.imdbID);
                 trailerBtn.text("Trailer");
-                trailer.append(trailerBtn);
 
+                // movies description button
                 let descriptionBtn = $("<button>", { class: 'btn descriptionBtn' });
 
                 descriptionBtn.text("Description");
                 descriptionBtn.data('data', movie.imdbID);
 
-                //add button to add watchlist
+                // button to add watchlist
                 let watchlistBtn = $("<button>", { class: 'btn addWatchlistBtn' });
 
                 watchlistBtn.html(`<i class="material-icons">add_circle_outline</i>`)
                 watchlistBtn.data('data', movie.imdbID);
 
+                trailer.append(trailerBtn);
                 trailer.append(descriptionBtn);
                 trailer.append(watchlistBtn);
+
                 card.append(trailer);
                 container.append(card);
                 moviesCard.append(container);
@@ -75,9 +78,15 @@ function renderTrailerByImdbId(imdbId) {
             let modalHeader = $("<h4>");
             let vidCon = $("<div>", { class: 'video-container' });
 
+            // CLOSE MODAL
+            let closeModal = $("<div>", {class: 'modal-footer'});
+            let closeBtn = $('<a>', {href: "#!", class: 'modal-close btn-flat'})
+
             modalHeader.text(data.fullTitle);
             modalContent.append(modalHeader);
             
+            closeBtn.text("Close");
+            closeModal.append(closeBtn);
 
             let iframe = $("<iframe>");
 
@@ -86,6 +95,7 @@ function renderTrailerByImdbId(imdbId) {
             iframe.attr('width', "853px");
             vidCon.append(iframe);
             modalContent.append(vidCon);
+            modalContent.append(closeModal);
             modal$.append(modalContent);
 
             $('#modal1').modal('open');
@@ -93,7 +103,7 @@ function renderTrailerByImdbId(imdbId) {
         });
 };
 
-// show description on id "modal2"
+// show description on id "modal1"
 function renderDescriptionbyImdb(imdbId) {
     console.log('click')
     let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
@@ -109,12 +119,15 @@ function renderDescriptionbyImdb(imdbId) {
         test = data
         movieDescription.empty();
 
-        let descriptionContent = $("<div>", { class: 'description-modal-content' });
+        let descriptionContent = $("<div>", { class:'description-modal-content' });
         let descriptionHeader = $("<h3>");
 
         descriptionHeader.text(data.Title);
         descriptionContent.append(descriptionHeader);
 
+        // CLOSE MODAL
+        let closeModal = $("<div>", {class: 'modal-footer'});
+        let closeBtn = $('<a>', {href: "#!", class: 'modal-close red btn'})
 
         let directorName = $('<p>');
         let year = $('<p>');
@@ -134,13 +147,19 @@ function renderDescriptionbyImdb(imdbId) {
         descriptionContent.append(rating);
         descriptionContent.append(plot);
 
+        closeBtn.text("Close");
+        closeModal.append(closeBtn);
+
         movieDescription.append(descriptionContent);
+        movieDescription.append(closeModal);
 
 
         $('#modal1').modal('open');
 
     });
 };
+
+// Shows movies' trailer on "modal1"
 function renderWatchListbyImdb(imdbId) {
     console.log('click')
     let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"

@@ -12,10 +12,10 @@ $(document).ready(function() {
 
         for(var i = 0; i < watchlist.length; i++){
 
-        let container$ = $("<div>", { class: 'col s4 m4'});
-        let card$ = $("<div>", { class: 'card' });
+        let container$ = $("<div>", { class: 'col s12 m4 center'});
+        let card$ = $("<div>", { class: 'card', width: 450 });
         let imgTag$ = $("<div>", { class: 'card-image' });
-        let poster$ = $("<img>", { src: watchlist[i].poster, height: 532 });
+        let poster$ = $("<img>", { src: watchlist[i].poster, height: 532, width: 450 });
         let cardTitle$ = $("<div>", { class: 'card-title' });
         let cardYear$ = $("<div>", { class: 'card-title' });
         let cardRuntime$ = $("<div>", { class: 'card-title' });

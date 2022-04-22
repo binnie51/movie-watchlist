@@ -16,10 +16,10 @@ header {
     background-color: #eee;
 }
 
-.myTrailer {
+/* .myTrailer {
     height:720px;
     width:1280px;
-}
+} */
 
 .container {
     display: flex;
@@ -49,11 +49,15 @@ header {
 }
 
 .brand-logo{
-    
     text-align: center;
 }
 
- /* media queries */
+/* .addWatchlistBtn {
+    display: flex;
+    justify-self: end;
+} */
+
+/* media queries */
 @media (min-width: 992px) {
 
     .video-container {
