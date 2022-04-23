@@ -36,4 +36,6 @@ The following image shows the web application's appearance:
 
 ![Screenshot of main site](./mockup/screenshot.png)
 
-
+### Mobile Version: 
+![screenshot mobile 1](./mockup/app_movie1.png)
+![screenshot mobile watchlist](./mockup/app_movie2.png)
