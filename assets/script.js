@@ -11,7 +11,7 @@ searchBtn.on("click", function() {
     let title = $("input").val();
 
     //assign variable to URL, concatenating title and APIkey
-    let requestUrl = "http://www.omdbapi.com/?s=" + title + "&apikey=528cb2fd";
+    let requestUrl = "https://www.omdbapi.com/?s=" + title + "&apikey=528cb2fd";
     //perform an API Call to request and return JSON data from OMDB
     fetch(requestUrl)
         .then(function(response) {
@@ -105,7 +105,7 @@ function renderTrailerByImdbId(imdbId) {
 // show description on id "modal1"
 function renderDescriptionbyImdb(imdbId) {
     console.log('click')
-    let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
+    let moviesUrl = "https://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
 
     fetch(moviesUrl)
         .then(function(response) {
@@ -161,7 +161,7 @@ function renderDescriptionbyImdb(imdbId) {
 // Shows movies' trailer on "modal1"
 function renderWatchListbyImdb(imdbId) {
     console.log('click')
-    let moviesUrl = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
+    let moviesUrl = "https://www.omdbapi.com/?i=" + imdbId + "&apikey=528cb2fd"
 
     fetch(moviesUrl)
         .then(function(response) {
