@@ -2,6 +2,7 @@
 let showWatchlist = $(".savedtitles")
 let clear = $(".clearBtn")
 let $clearList = $("#clearList")
+
 //first get pre-existing movies from local storage otherwise create new array
 $(document).ready(function() {
     let storedList = localStorage.getItem("watchlist");
@@ -12,34 +13,38 @@ $(document).ready(function() {
 
         for(var i = 0; i < watchlist.length; i++){
 
-        let container$ = $("<div>", { class: 'col s12 m4 center'});
-        let card$ = $("<div>", { class: 'card', width: 450 });
+        // let container$ = $("<div>", { class: 'col'});
+        let card$ = $("<div>", { class: 'card horizontal'});
         let imgTag$ = $("<div>", { class: 'card-image' });
-        let poster$ = $("<img>", { src: watchlist[i].poster, height: 532, width: 450 });
-        let cardTitle$ = $("<div>", { class: 'card-title' });
-        let cardYear$ = $("<div>", { class: 'card-title' });
-        let cardRuntime$ = $("<div>", { class: 'card-title' });
-        let cardPlot$ = $("<div>", { class: 'card-title' });
-        cardTitle$.text("Title: " + watchlist[i].title);
-        cardYear$.text("Year:" +watchlist[i].year);
-        cardRuntime$.text("Runtime: "+ watchlist[i].runtime);
-        cardPlot$.text("Review: " + watchlist[i].plot);
-        imgTag$.append(poster$);
-        card$.append(imgTag$);
-        card$.append(cardTitle$);
-        card$.append(cardYear$);
-        card$.append(cardRuntime$);
-        card$.append(cardPlot$);
+        let poster$ = $("<img>", { src: watchlist[i].poster, width: 225, height: 266});
+        
+        let movieCardContent = $("<div>", {class:'card-content'});
 
-        container$.append(card$);
-        showWatchlist.append(container$);
-            }}
+        let title = $("<h5>");
+        let year = $("<h6>");
+        let director = $("<h6>");
+
+        // popoulate card 
+        title.html(watchlist[i].title);
+        year.html(watchlist[i].year);
+        director.html(watchlist[i].director);
+
+        imgTag$.append(poster$);
+        movieCardContent.append(title);
+        movieCardContent.append(year);
+        movieCardContent.append(director);
+        
+        card$.append(imgTag$);
+        card$.append(movieCardContent);
+        showWatchlist.append(card$);
+        }
+    }
             else {
                 watchlist = [];
-            
             }
   
     
     
     console.log("loaded watchlist", watchlist);
+    
 });

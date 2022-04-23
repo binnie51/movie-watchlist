@@ -5,21 +5,7 @@ header {
 .waves-effect {
     margin-top: 20px;
     border-radius: 20px;
-    background-color: #ea6f85;
 }
-.dark {
-    background-color: #202123;
-    color: #fff;
-}
-
-.light {
-    background-color: #eee;
-}
-
-/* .myTrailer {
-    height:720px;
-    width:1280px;
-} */
 
 .container {
     display: flex;

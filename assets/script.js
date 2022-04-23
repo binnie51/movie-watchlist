@@ -2,7 +2,6 @@ let searchBtn = $("#searchBtn");
 let moviesCard = $(".movie-cards");
 let modal$ = $('.modal').modal();
 let movieDescription = $('.modal').modal();
-
 var container = $(".container");
 
 let trailerID;
@@ -78,9 +77,9 @@ function renderTrailerByImdbId(imdbId) {
             let modalHeader = $("<h4>");
             let vidCon = $("<div>", { class: 'video-container' });
 
-            // CLOSE MODAL
+            // Close Modal
             let closeModal = $("<div>", {class: 'modal-footer'});
-            let closeBtn = $('<a>', {href: "#!", class: 'modal-close btn-flat'})
+            let closeBtn = $('<a>', {href: "#!", class: 'modal-close waves-effect waves-green btn-flat'})
 
             modalHeader.text(data.fullTitle);
             modalContent.append(modalHeader);
@@ -125,9 +124,9 @@ function renderDescriptionbyImdb(imdbId) {
         descriptionHeader.text(data.Title);
         descriptionContent.append(descriptionHeader);
 
-        // CLOSE MODAL
+        // Close Modal
         let closeModal = $("<div>", {class: 'modal-footer'});
-        let closeBtn = $('<a>', {href: "#!", class: 'modal-close red btn'})
+        let closeBtn = $('<a>', {href: "#!", class: 'modal-close waves-effect waves-green btn-flat'})
 
         let directorName = $('<p>');
         let year = $('<p>');
@@ -176,7 +175,7 @@ function renderWatchListbyImdb(imdbId) {
             poster: data.Poster,
             title: data.Title,
             year: data.Year,
-            runtime: data.Runtime,
+            director: data.Director,
             rated: data.Rated,
             plot: data.Plot
         }
@@ -224,5 +223,3 @@ $(document).ready(function() {
     }
     console.log("loaded watchlist", watchlist);
 });
-
-//render local storage to watchlist.html
