@@ -3,6 +3,8 @@
 This application acts as a search engine tool for users to search for reccomended movies. Two sets of APIs will provide the database of the movies
 
 
+
+
 # Group Project - Movie Watchlist
 
 This application is built using HTML, CSS, and Materialize and made interactive through JavaScript. It communicates with two public APIs to access movie data that will get selectively saved to local storage based on user input. Poster images, titles, directors, ratings, and running time are provided by the Open Movie Database(OMDB) and trailers are provided by the Internet Movie Database(IMDb).
@@ -32,9 +34,12 @@ THEN a list of "likes" and my "watchlist" gets rendered from local storage to a 
 
 ```
 ```
+## Link to deployed site  
+
+https://binnie51.github.io/movie-watchlist/
 
 ## Mock Up
 The following image shows the web application's appearance:
 
-![]()
+![This screenshot shows desktop version of site](/mockup//screenshot.png)
 
