@@ -34,6 +34,12 @@ THEN a list of "likes" and my "watchlist" gets rendered from local storage to a 
 
 ```
 ```
+
+## Link to deployed site
+
+https://binnie51.github.io/movie-watchlist/
+
+
 The following image shows the web application's appearance:
 
 ![Screenshot of main site](/mockup/screenshot.png)
