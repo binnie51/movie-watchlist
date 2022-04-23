@@ -34,6 +34,6 @@ https://binnie51.github.io/movie-watchlist/
 
 The following image shows the web application's appearance:
 
-![Screenshot of main site](/mockup/screenshot.png)
+![Screenshot of main site](./mockup/screenshot.png)
 
 
