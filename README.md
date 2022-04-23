@@ -1,9 +1,3 @@
-# movie-watchlist
-
-This application acts as a search engine tool for users to search for reccomended movies. Two sets of APIs will provide the database of the movies
-
-
-
 
 # Group Project - Movie Watchlist
 
@@ -11,7 +5,7 @@ This application is built using HTML, CSS, and Materialize and made interactive 
 
 ## User Story
 
-As a user, I can browse/search movie by title, view posters images, read a synopsis and play a trailer. Based on my findings, I will be able to "like" movies by clicking an icon and add titles to a watchlist by clicking "add to watchlist". I can view my selections by clicking on "my watchlist".
+As a user, I can browse/search movie by title, view posters images, read a synopsis and play a trailer. Based on my findings, I will be able to add titles to a watchlist by clicking "add to watchlist". I can view my selections by clicking on "my watchlist".
 
 ## Acceptance Criteria
 
@@ -24,8 +18,6 @@ THEN I am presented with poster image, title, director, synopsis, and running ti
 WHEN I want to watch a trailer
 THEN I can click on play to view it
 
-WHEN I want to "like" a movie while browsing
-THEN I can click on an icon below poster image to add to local storage
 WHEN I want to add a title to my watchlist
 THEN I can click on "add to watchlist" button below poster image to add to local storage
 
