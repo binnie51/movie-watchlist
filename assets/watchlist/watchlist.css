@@ -1,0 +1,17 @@
+h4 {
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    color: #ea6f85;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}
+
+.savedtitles {
+    gap: 10px;
+    display: flex;
+    /* align-items: center; */
+}
