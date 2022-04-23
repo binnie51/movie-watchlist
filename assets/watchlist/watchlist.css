@@ -13,5 +13,6 @@ h4 {
 .savedtitles {
     gap: 10px;
     display: flex;
+    margin: 20px;
     /* align-items: center; */
 }
